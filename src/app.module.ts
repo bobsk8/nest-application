@@ -13,7 +13,7 @@ import { User } from './modules/user/user.model';
     UserModule, 
     TypeOrmModule.forRoot({
       type: 'mongodb',
-      host: 'localhost',
+      host: process.env.DB_URL,
       port: 27017,
       username: '',
       useUnifiedTopology: true,
