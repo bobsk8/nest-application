@@ -3,7 +3,7 @@ import { IsString, IsInt } from 'class-validator';
 export class UpdateUserDto {
     
     @IsString()
-    name: String;
+    name: string;
     @IsInt()
     age: number;    
 }

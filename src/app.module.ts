@@ -8,12 +8,15 @@ import { UserModule } from './modules/user/user.module';
 import { User } from './modules/user/user.model';
 
 @Module({
-  imports: [AuthModule, UserModule, 
+  imports: [
+    AuthModule, 
+    UserModule, 
     TypeOrmModule.forRoot({
       type: 'mongodb',
       host: 'localhost',
       port: 27017,
       username: '',
+      useUnifiedTopology: true,
       password: '',
       database: 'test',
       entities: [User],
