@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 
 import { UserService } from '../user/user.service';
@@ -25,7 +25,7 @@ export class AuthService {
     async login(credentialsDto: CredentialsDto) {
         const user = await this.validateUser(credentialsDto);
         if (!user) {
-            throw new NotFoundException(`User doesn't exists`);
+            throw new UnauthorizedException(`username or password is incorrect`);
         }
         const payload = { username: user.username, sub: user.id };
         return {

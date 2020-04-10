@@ -24,17 +24,20 @@ export class UserController {
     }
 
     @Get(':id')
+    @UseGuards(JwtAuthGuard)
     findOne(@Param('id') id) {
         return this.userService.findOne(id);
     }
 
     @Put(':id')
     @UsePipes(ValidationPipe)
+    @UseGuards(JwtAuthGuard)
     update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
         return this.userService.update(id, updateUserDto);
     }
 
     @Delete(':id')
+    @UseGuards(JwtAuthGuard)
     remove(@Param('id') id) {
         return this.userService.remove(id);
     }
